@@ -1,0 +1,193 @@
+/* colour hexcodes from colorhunt.co started with a combination of teal, icy green and cold gray
+https://colorhunt.co/palette/16423c6a9c89c4dad2e9efec but ended up tweaking individual sections for visibility 
+*/
+
+/* overall font and colours */
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif; /* sans serif font because bias */
+  color: #e9efec; /* cold gray for most text */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* only for the readme file */
+#readme {
+  margin: 1rem;
+  padding: 2rem;
+}
+#readme footer {
+  text-align: right;
+  margin-top: 120px;
+}
+
+body {
+  background-color: #16423c; /* teal for background */
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-bottom: 15px; /* spacing and to avoid need for <br> in html */
+}
+
+/* section containers */
+.container {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 950px; /* so it doesn't get too stretched out */
+  background-color: #357c61;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px black; /* for a bit of pop */
+}
+
+/* navbar */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between; /* pushes the <a> and <button> to opposite sides */
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+nav a,
+nav button {
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: inline-block;
+  text-align: center;
+}
+/* more styling rules that affect navbar buttons are below under .bigButton */
+
+/* sticky button for user to toggle tooltips */
+#buttonToggleTooltips {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+/* user input forms */
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input,
+textarea {
+  width: 100%; /* fills the max size limit */
+  padding: 10px;
+  background-color: #16423c;
+  border: 1px solid #6a9c89;
+  border-radius: 5px;
+  transition: border-color 0.3s ease; /* border highlight for a touch of feedback */
+}
+input {
+  margin-bottom: 20px;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #c4dad2; /* highlight for when user is typing */
+}
+
+/* buttons */
+
+button {
+  display: inline-block;
+  background-color: #6a9c89;
+  /* padding: 10px 20px; */
+  border: 3px solid #16423c; /* thick border */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* colour transition for a touch of feedback */
+}
+
+.bigButton {
+  /* display: inline-block;
+  background-color: #6a9c89; */
+  padding: 10px 20px;
+  /* border: 3px solid #16423c;*/ /* thick border */
+  /* border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* colour transition for a touch of feedback */
+}
+
+.smallButton {
+  padding: 2px 4px;
+}
+
+.bigButton:hover {
+  background-color: #1f5f48; /* darkens for text to pop a bit */
+}
+
+.bigButton:active {
+  background-color: #e9efec; /* flashes for feedback */
+}
+
+/* tooltips */
+.tutorialTooltip {
+  font-size: 0.9em;
+  background-color: #285a54;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  color: #e9efec;
+}
+
+/* results container */
+#outputHallRooms {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.outputRoom {
+  margin-bottom: 15px;
+}
+
+.doorPlate {
+  font-weight: bold;
+}
+
+.roomContainer {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+/* results container gets its own box you can scroll through instead of the page lengthening each time a long list returns */
+#userReturnContainer {
+  height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* a touch of responsive web design */
+
+/* reduces font size by 10% for less squishing on mobile screens */
+@media (max-width: 600px) {
+  body {
+    font-size: 0.9rem;
+  }
+}
+
+/* increases font size by 12% for bigger screens */
+@media (min-width: 1200px) {
+  body {
+    font-size: 1.12rem;
+  }
+}
+
+/* and if you're Sam */
+@media (min-width: 3440px) {
+  body {
+    font-size: 1.26rem;
+  }
+}

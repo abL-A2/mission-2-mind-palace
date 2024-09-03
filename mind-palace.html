@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mind.palace</title>
+    <link rel="stylesheet" href="mind-palace-styles.css" />
+    <script defer src="mind-palace-script.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>mind.palace</h1>
+    </header>
+    <!-- below is very simple navbar. at the moment only has two buttons: about
+    (which will link to a readme/design document) and display all tooltips -->
+    <nav>
+      <ul>
+        <li>
+          <a href="mind-palace-readme.html" class="bigButton" target="_blank"
+            >about mind.palace</a
+          >
+        </li>
+        <li>
+          <button class="bigButton" id="buttonToggleTooltips">
+            toggle tooltips
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <hr />
+    <!--header designates this as 'build' phase, or user input section-->
+    <section class="container" id="userInputContainer">
+      <h2>mind.palace.build();</h2>
+      <!-- below form solicits the required inputs, lays out best practice -->
+      <form>
+        <label class="inputLabel" for="userInputHall">1: hall</label>
+        <!-- 'hall' becomes the class tag which will contain the room. first step because broad category. will force itself to save as '>name' for visual emphasis and to differentiate from any similar or same room tags. tooltip hides after first submit -->
+        <p class="tutorialTooltip" id="step1Tutorial">
+          one word, only letters. no spaces, numbers, special chars - broad
+          category or class. this becomes a HALL. multiple rooms can be in a
+          hall. halls must be unique. if inputting an existing hall, will add
+          room and door to that hall instead of creating new hall.
+        </p>
+
+        <input
+          type="text"
+          class="userInput"
+          id="userInputHall"
+          name="userInputHall"
+          placeholder="example: history"
+          required
+        />
+
+        <label class="inputLabel" for="userInputRoom">2: room</label>
+        <!-- 'room' is the content. second step because it's easier to have this typed out by the user first before moving on so the user has the laid-out thought visible while trying to condense it into more specific tags. tooltip hides after first submit -->
+        <p class="tutorialTooltip" id="step2Tutorial">
+          sentences, small paragraph, max 500 chars - content. this becomes a
+          ROOM. a room must have a door, and must belong to a hall.
+        </p>
+
+        <textarea
+          class="userInput"
+          id="userInputRoom"
+          name="userInputRoom"
+          rows="6"
+          cols="80"
+          maxlength="500"
+          placeholder="example: The modern Hindu-Arabic number system is based on ten symbols: 1, 2, 3, 4, 5, 6, 7, 8, 9 and 0."
+          required
+        ></textarea>
+        <p class="inputCounter" id="inputRoomCounter"><sup>0/500</sup></p>
+
+        <label class="inputLabel" for="userInputDoor">3: door</label>
+        <!-- 'door' is the subject line for the content. third step so the user can easily refer to full content before thinking about what they want to condense it down to. differentiated from 'hall' by not being preceded by '>' on save. tooltip hides after first submit -->
+        <p class="tutorialTooltip" id="step3Tutorial">
+          one word, only letters. no spaces, numbers, special chars - the
+          subject line of your room. this becomes its DOOR. a door must have a
+          room, and is used for finding the room within a hall without searching
+          through the room.
+        </p>
+        <input
+          type="text"
+          class="userInput"
+          id="userInputDoor"
+          name="userInputDoor"
+          placeholder="example: history"
+          required
+        />
+        <!-- submit button, first time clicked hides tooltip paragraphs. just beneath the button will be a preview of the hall-door combination that will serve as the new room's address -->
+        <label class="inputLabel">4: commit</label>
+        <p class="tutorialTooltip" id="step4Tutorial">
+          create a new HALL or access an existing one, build a new ROOM into
+          that hall, and close that room with a DOOR. review inputs, then click
+          .build()
+        </p>
+        <button class="bigButton" id="buildButton">.build();</button>
+        <div class="container" id="previewHallDoor">
+          <!-- preview should hide once confirmed, with a short delay built in for user's mental snapshot after button click -->
+          <label class="outputPreview" id="hallPreview"
+            >hall: <span id="hallPreviewDisplay"></span
+          ></label>
+          <label class="outputPreview" id="doorPreview"
+            >door: <span id="doorPreviewDisplay"></span
+          ></label>
+        </div>
+      </form>
+    </section>
+    <section class="container" id="userFindContainer">
+      <!-- header designates this as the 'find' phase. user can call up halls or hall-door combinations to find rooms within the palace  -->
+      <h2>mind.palace.find();</h2>
+      <form>
+        <!-- tooltip hides after first submit -->
+        <p class="tutorialTooltip" id="findTutorial">
+          always start with '>'. use >all to retrieve full list of built halls.
+          use >(hallname) to retrieve a specific hall and list all its rooms,
+          which you can enter by clicking its 'enter room' button. use
+          >(hallname)-(doorname) to retrieve a single door and immediately
+          enter.
+        </p>
+        <input
+          type="text"
+          class="userInput"
+          id="userInputFind"
+          name="userInputFind"
+          placeholder=">all/>hall-door"
+          required
+        />
+        <!-- return button, delay before displaying results -->
+        <button class="bigButton" id="findButton">.find();</button>
+      </form>
+    </section>
+    <!-- container to display search result, initially hidden until user request -->
+    <section class="container" id="userReturnContainer" style="display: none">
+      <!-- displays the hall match -->
+      <h3 id="outputHall"></h3>
+      <ul id="outputHallRooms">
+        <li class="outputRoom">
+          <p class="doorPlate"></p>
+          <button id="doorEnter" class="bigButton">enter</button>
+          <div class="roomContainer" style="display: none">
+            <p class="roomContent"></p>
+          </div>
+        </li>
+        <!-- more room matches -->
+      </ul>
+    </section>
+  </body>
+  <!-- testbed -->
+</html>
